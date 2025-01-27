@@ -112,3 +112,46 @@ VALUES
   ('Purchasing',	5,	36,	7),
   ('Personnel',	5,	37,	9),
   ('Marketing',	5,	38,	2);
+
+INSERT INTO Item (ItemName,ItemType,ItemColour)
+VALUES
+  ('Boots-snakeproof',	'C',	'Green'),
+  ('Camel Saddle',	'R',	'Brown'),
+  ('Compass',	'N',	''),
+  ('Elephant polo stick',	'R',	'Bamboo'),
+  ('Exploring in 10 Easy Lessons',	'B',	''),
+  ('Geo positioning system',	'N',	''),
+  ('Hammock',	'F',	'Khaki'),
+  ('Hat-Polar Explorer',	'C',	'White'),
+  ('How to Win Foreign Friends',	'B',	''),
+  ('Map case',	'E',	'Brown'),
+  ('Map measure',	'N',	''),
+  ('Pith Helmet',	'C',	'Khaki'),
+  ('Pocket knife-Avon',	'E',	'Brown'),
+  ('Pocket knife-Nile',	'E',	'Brown'),
+  ('Safari chair',	'F',	'Khaki'),
+  ('Safari cooking kit',	'F',	''),
+  ('Sextant',	'N',	''), 
+  ('Stetson',	'C',	'Black'),
+  ('Tent - 2 person',	'F',	'Khaki'),
+  ('Tent - 8 person',	'F',	'Khaki');
+
+INSERT INTO Employee (EmployeeNumber,EmployeeName,EmployeeSalary,DepartmentName,BossNumber)
+VALUES
+  (1,	'Alice',	75000,	'Management',	''),
+  (2,	'Ned',	45000,	'Marketing',	1),
+  (3,	'Andrew',	25000,	'Marketing',	2),
+  (4,	'Clare',	22000,	'Marketing',	2),
+  (5,	'Todd',	38000,	'Accounting',	1),
+  (6,	'Nancy',	22000,	'Accounting',	5),
+  (7,	'Brier',	43000,	'Purchasing',	1),
+  (8,	'Sarah',	56000,	'Purchasing',	7),
+  (9,	'Sophie',	35000,	'Personnel',	1),
+  (10,	'Sanjay',	15000,	'Navigation',	3),
+  (11,	'Rita',	15000,	'Books',	4),
+  (12,	'Gigi',	16000,	'Clothes',	4),
+  (13,	'Maggie',	16000,	'Clothes',	4),
+  (14,	'Paul',	11000,	'Equipment',	3),
+  (15,	'James',	15000,	'Equipment',	3),
+  (16,	'Pat',	15000,	'Furniture',	3),
+  (17,	'Mark',	15000,	'Recreation',	3);
