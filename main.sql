@@ -98,3 +98,17 @@ VALUES
   (99,	1,	'Sextant',	'Equipment',	106),
   (100,	3,	'Hat-Polar Explorer',	'Clothes',	105),
   (101,	3,	'Stetson',	'Clothes',	105);
+
+INSERT INTO Department (DepartmentName,DepartmentFloor,DepartmentPhone,EmployeeNumber)
+VALUES 
+  ('Management',	5,	34,	1),
+  ('Books',	1,	81,	4),
+  ('Clothes',	2,	24,	4),
+  ('Equipment',	3,	57,	3),
+  ('Furniture',	4,	14,	3),
+  ('Navigation',	1,	41,	3),
+  ('Recreation',	2,	29,	4),
+  ('Accounting',	5,	35,	5),
+  ('Purchasing',	5,	36,	7),
+  ('Personnel',	5,	37,	9),
+  ('Marketing',	5,	38,	2);
