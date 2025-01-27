@@ -155,3 +155,41 @@ VALUES
   (15,	'James',	15000,	'Equipment',	3),
   (16,	'Pat',	15000,	'Furniture',	3),
   (17,	'Mark',	15000,	'Recreation',	3);
+
+INSERT INTO Sale (SaleNumber,SaleQuantity,ItemName,DepartmentName)
+VALUES
+  (1001,	2,	'Boots-snakeproof',	'Clothes'),
+  (1002,	1,	'Pith Helmet',	'Clothes'),
+  (1003,	1,	'Sextant',	'Navigation'),
+  (1004,	3,	'Hat-Polar Explorer',	'Clothes'),
+  (1005,	5,	'Pith Helmet',	'Equipment'),
+  (1006,	1,	'Pocket knife-Nile',	'Clothes'),
+  (1007,	1,	'Pocket knife-Nile',	'Recreation'),
+  (1008,	1,	'Compass',	'Navigation'),
+  (1009,	1,	'Geo positioning system',	'Navigation'),
+  (1010,	5,	'Map measure',	'Navigation'),
+  (1011,	1,	'Geo positioning system',	'Books'),
+  (1012,	1,	'Sextant',	'Books'),
+  (1013,	3,	'Pocket knife-Nile',	'Books'),
+  (1014,	1,	'Pocket knife-Nile',	'Navigation'),
+  (1015,	1,	'Pocket knife-Nile',	'Equipment'),
+  (1016,	1,	'Sextant',	'Clothes'),
+  (1017,	1,	'Sextant',	'Equipment'),
+  (1018,	1,	'Sextant',	'Recreation'),
+  (1019,	1,	'Sextant',	'Furniture'),
+  (1020,	1,	'Pocket knife-Nile',	'Furniture'),
+  (1021,	1,	'Exploring in 10 Easy Lessons',	'Books'),
+  (1022,	1,	'How to Win Foreign Friends',	'Books'),
+  (1023,	1,	'Compass',	'Books'),
+  (1024,	1,	'Pith Helmet',	'Books'),
+  (1025,	1,	'Elephant polo stick',	'Recreation'),
+  (1026,	1,	'Camel Saddle',	'Recreation');
+
+INSERT INTO Supplier (SupplierNumber,SupplierName)
+VALUES
+  (101,	'Global Maps and Books'),
+  (102,	'Nepalese Corp.'),
+  (103,	'All Sports Manufacturing'),
+  (104,	'Sweatshops Unlimited'),
+  (105,	'All Points inc.'),
+  (106,	'Sao Paulo Manufacturing');
