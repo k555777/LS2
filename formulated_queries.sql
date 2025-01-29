@@ -6,7 +6,7 @@ select * from employee;
 select * from sale;
 select * from supplier;
 
--- test queries
+-- test queries: part 1
 
 -- 1. What are the names of employees in the Marketing Department?
 select EmployeeName from Employee 
@@ -236,3 +236,133 @@ order by
 -- 105	All Points inc.	Sextant	1.0
 -- 106	Sao Paulo Manufacturing	Sextant	1.0
 
+-- test queries: part 2 - nested queries
+
+-- 1. What are the names of items sold by departments on the second floor? This was previously solved in the preceding section by the use of a join. However, it could be more efficiently solved by using an inner query:
+select distinct ItemName
+from Sale
+where DepartmentName in
+(select DepartmentName from Department
+where DepartmentFloor = 2);
+
+-- Answer:
+
+-- ItemName
+-- Boots-snakeproof
+-- Pith Helmet
+-- Hat-Polar Explorer
+-- Pocket knife-Nile
+-- Sextant
+-- Elephant polo stick
+-- Camel Saddle
+
+-- 2. Find the salary of Clare's manager.
+select EmployeeName, EmployeeSalary from Employee
+where EmployeeNumber =
+(select BossNumber
+from Employee
+where EmployeeName = 'Clare');
+
+-- Answer:
+
+-- EmployeeName	EmployeeSalary
+-- Ned	45000
+
+-- 3. Find the name and salary of the managers with more than two employees
+
+select EmployeeName, EmployeeSalary 
+from Employee
+where EmployeeNumber in
+          (select BossNumber
+          from Employee
+          group by BossNumber having COUNT(*) > 2);
+
+-- Answer:
+
+-- EmployeeName	EmployeeSalary
+-- Alice	75000
+-- Andrew	25000
+-- Clare	22000
+
+-- 4. List the names of the employees who earn more than any employee in the Marketing department
+
+select EmployeeName, EmployeeSalary
+from Employee
+where EmployeeSalary >
+    (select MAX(EmployeeSalary)
+    from Employee
+    where DepartmentName = 'Marketing');
+
+-- Answer:
+
+-- EmployeeName	EmployeeSalary
+-- Alice	75000
+-- Sarah	56000
+
+-- 5. Among all the departments with a total salary greater than £25000, find the departments that sell Stetsons.
+
+select DISTINCT DepartmentName
+from Sale
+where ItemName = 'Stetsons' and DepartmentName IN 
+    (select DepartmentName
+    from Employee
+    group by DepartmentName 
+    HAVING SUM(EmployeeSalary) > 25000);
+
+-- 6. Find the suppliers that deliver compasses and at least one other kind of item
+
+select distinct Delivery.SupplierNumber, Supplier.SupplierName 
+from (Supplier NATURAL JOIN Delivery)
+where (
+    ItemName <> 'Compass' and
+    SupplierNumber in (select SupplierNumber
+                    from Delivery
+                    where ItemName = 'Compass'));
+
+-- Answer:
+
+-- SupplierNumber	SupplierName
+-- 105	All Points inc.
+-- 101	Global Maps and Books
+-- 103	All Sports Manufacturing
+-- 102	Nepalese Corp.
+
+
+-- 7. Find the suppliers that deliver compasses and at least three other kinds of item
+
+select distinct Delivery.SupplierNumber, Supplier.SupplierName 
+from (Supplier NATURAL JOIN Delivery) 
+where SupplierNumber in
+    (select SupplierNumber
+    from Delivery
+    where ItemName = 'Compass')
+group by Delivery.SupplierNumber, Supplier.SupplierName
+having COUNT(distinct ItemName) > 3;
+
+-- Answer:
+
+-- SupplierNumber	SupplierName
+-- 101	Global Maps and Books
+-- 102	Nepalese Corp.
+-- 103	All Sports Manufacturing
+-- 105	All Points inc.
+
+-- 8. List the departments for which each item delivered to the department is delivered to some other department as well
+
+select distinct DepartmentName 
+from Delivery as Delivery1 
+WHERE NOT EXISTS
+    (select *
+    from Delivery AS Delivery2
+    where Delivery2.DepartmentName = Delivery1.DepartmentName
+        AND ItemName NOT IN
+                        (select ItemName
+                        from Delivery AS Delivery3
+                        where Delivery3.DepartmentName <> Delivery1.DepartmentName));
+
+-- Answer:
+
+-- DepartmentName
+-- Books
+-- Equipment
+-- Furniture
